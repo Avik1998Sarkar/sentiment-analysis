@@ -1,4 +1,4 @@
-package com.springai.sentiment_analyzer;
+package com.springai.sentiment;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

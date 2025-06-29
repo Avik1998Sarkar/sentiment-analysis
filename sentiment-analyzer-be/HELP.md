@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.springai.sentiment-analyzer' is invalid and this project uses 'com.springai.sentiment_analyzer' instead.
+* The original package name 'com.springai.sentiment-analyzer' is invalid and this project uses 'com.springai.sentiment' instead.
 
 # Getting Started
 
