@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -6,6 +6,14 @@ import './App.css'
 
 function App() {
 	const [feedback, setFeedback] = useState("");
+	const [feedbackList, setfeedbackList] = useState([]);
+
+	useEffect(() => {
+		axios.get('http://localhost:8080/api/feedback')
+			.then(response => setfeedbackList(response.data))
+			.catch(error => console.error("There was an error fetching the feedback!", error));
+	}, [])
+
 
 	const handelFeedbackSubmit = async (e) => {
 		e.preventDefault();
@@ -15,8 +23,20 @@ function App() {
 				headers: { 'Content-Type': 'text/plain' }
 			}
 		);
+		setfeedbackList([...feedbackList, response.data]);
 		setFeedback("");
 	};
+
+	const getSentimentColor = (sentiment) => {
+		switch (sentiment) {
+			case 'POSITIVE':
+				return 'bg-green-800 font-bold';
+			case 'NEGATIVE':
+				return 'bg-red-800 font-bold';
+			default:
+				return 'bg-yellow-800 font-bold';
+		}
+	}
 
 	return (
 		<>
@@ -46,21 +66,13 @@ function App() {
 						</tr>
 					</thead>
 					<tbody>
-						<tr className="border-b">
-							<td className='px-4 py-2 text-left'>Great service!</td>
-							<td className='px-4 py-2 text-left'>+1</td>
-							<td className='px-4 py-2 text-left'>Positive</td>
-						</tr>
-						<tr className="border-b">
-							<td className='px-4 py-2 text-left'>Could be better.</td>
-							<td className='px-4 py-2 text-left'>0</td>
-							<td className='px-4 py-2 text-left'>Neutral</td>
-						</tr>
-						<tr className="border-b">
-							<td className='px-4 py-2 text-left'>Not satisfied with the product.</td>
-							<td className='px-4 py-2 text-left'>-1</td>
-							<td className='px-4 py-2 text-left'>Negative</td>
-						</tr>
+						{feedbackList.map((item) => (
+							<tr key={item.id} className="border-b">
+								<td className='px-4 py-2 text-left'>{item.content}</td>
+								<td>{item.sentimentScore}</td>
+								<td className={`${getSentimentColor(item.sentiment)}`}>{item.sentiment}</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
