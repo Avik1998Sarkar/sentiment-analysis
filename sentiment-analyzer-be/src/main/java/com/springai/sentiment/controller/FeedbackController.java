@@ -18,7 +18,7 @@ public class FeedbackController {
 
     @GetMapping
     public List<Feedback> getAllFeedback() {
-        return feedbackRepository.findAll();
+        return feedbackRepository.findAllByOrderByCreatedAtDesc();
     }
 
     @PostMapping
