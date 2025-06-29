@@ -11,7 +11,7 @@ function App() {
 
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 10;
+    const itemsPerPage = 8;
 
     // Sorting state
     const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'desc' });
@@ -41,8 +41,8 @@ function App() {
             setNewlyAddedId(response.data.id);
             setFeedback("");
             setTimeout(() => setNewlyAddedId(null), 1000);
-            // Go to last page if new entry added
-            setCurrentPage(Math.ceil((feedbackList.length + 1) / itemsPerPage));
+            // Go to first page after new entry added
+            setCurrentPage(1);
         } catch (err) {
             setError(true);
         } finally {
