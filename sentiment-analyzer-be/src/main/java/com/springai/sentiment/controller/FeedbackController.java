@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/feedback")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class FeedbackController {
     private final FeedbackRepository feedbackRepository;
     private final SentimentAnalysisService sentimentAnalysisService;
