@@ -16,16 +16,20 @@ function App() {
 
 
 	const handelFeedbackSubmit = async (e) => {
-		e.preventDefault();
-		const response = await axios.post('http://localhost:8080/api/feedback',
-			feedback,
-			{
-				headers: { 'Content-Type': 'text/plain' }
-			}
-		);
-		setfeedbackList([...feedbackList, response.data]);
-		setFeedback("");
-	};
+        e.preventDefault();
+        if (!feedback.trim()) {
+            alert("Feedback cannot be empty");
+            return;
+        }
+        const response = await axios.post('http://localhost:8080/api/feedback',
+            feedback,
+            {
+                headers: { 'Content-Type': 'text/plain' }
+            }
+        );
+        setfeedbackList([...feedbackList, response.data]);
+        setFeedback("");
+    };
 
 	const getSentimentColor = (sentiment) => {
 		switch (sentiment) {
