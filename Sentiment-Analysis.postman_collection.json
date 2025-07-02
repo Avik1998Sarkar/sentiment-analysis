@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "0f2c9292-df99-4d54-beec-42af03271d2d",
+		"name": "Sentiment-Analysis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10914353",
+		"_collection_link": "https://martian-satellite-398887.postman.co/workspace/My-Workspace~66ac3103-13f5-4a7b-88ed-f0494a212352/collection/10914353-0f2c9292-df99-4d54-beec-42af03271d2d?action=share&source=collection_link&creator=10914353"
+	},
+	"item": [
+		{
+			"name": "Get All Sentiment Feedback",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Sentiment Feedback",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Initially I thought this is very bad, but it seems like working ok ok. not so good, not so bad",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/feedback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"feedback"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
