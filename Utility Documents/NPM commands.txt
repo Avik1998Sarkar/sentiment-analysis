@@ -1,0 +1,14 @@
+npm create vite@latest sentiment-analyzer-fe -- --template react
+
+npm install
+
+npm run dev
+
+npm install -D tailwindcss postcss autoprefixer
+or
+npm install -D tailwindcss@^3.4.17 postcss autoprefixer
+
+//typescript dependency
+npm install -D @types/node
+
+npx tailwindcss init -p
